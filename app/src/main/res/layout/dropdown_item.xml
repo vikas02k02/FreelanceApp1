@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <!-- TextView for the country name -->
+    <TextView
+        android:id="@+id/item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:textSize="17sp"
+        android:padding="4dp"
+        android:layout_marginEnd="30dp"
+        android:textColor="@color/black"
+        android:gravity="start"
+        android:background="@drawable/drop"/>
+</LinearLayout>

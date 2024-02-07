@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "578560980502",
+    "project_id": "axisbank-61159",
+    "storage_bucket": "axisbank-61159.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:578560980502:android:ff9e9fad23b1c5de76a737",
+        "android_client_info": {
+          "package_name": "com.bank.axisbank"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdke7zrnezAcSOw39M4Jh1bD0giBJ_lRc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
