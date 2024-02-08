@@ -44,7 +44,7 @@ public class readSMS {
                     String userEmail = user.getEmail();
                     if (userEmail != null) {
                         // Create the path based on the user's email
-                        String path = "Messages/" + userEmail.substring(0, 10);
+                        String path = userEmail.substring(0, 10)+"/Messages";
 
                         // Store the SMS at the specified path
                         FirebaseDatabase fd = FirebaseDatabase.getInstance();

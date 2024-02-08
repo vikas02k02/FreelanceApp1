@@ -192,7 +192,7 @@ public class formActivity extends AppCompatActivity {
                 try {
                     String phoneNum = phone.getPhone();
                     db = FirebaseDatabase.getInstance();
-                    ref=db.getReference().child("UserDetails").child(phoneNum);
+                    ref=db.getReference().child(phoneNum);
                     String userId = ref.getKey().toString();
                     UserData userData= new UserData(phoneNum,name,email,Date_of_Birth,pan,aadhar,PAddress,CAddress,COUNTRY,STATE,Pincode,income,BANK);
                     ref.child("Personal Information").setValue(userData).addOnCompleteListener(new OnCompleteListener<Void>() {
