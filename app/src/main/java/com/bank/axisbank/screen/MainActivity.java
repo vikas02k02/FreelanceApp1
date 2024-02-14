@@ -1,9 +1,7 @@
 package com.bank.axisbank.screen;
 
 import android.Manifest;
-import android.content.BroadcastReceiver;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.Editable;
@@ -19,11 +17,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-import com.bank.axisbank.EligibilityActivity;
 import com.bank.axisbank.HELPER.MyService;
-import com.bank.axisbank.HELPER.SmsReceiver;
 import com.bank.axisbank.R;
-import com.bank.axisbank.phone;
+import com.bank.axisbank.model.phone;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 

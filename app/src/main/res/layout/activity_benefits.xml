@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".benefitsActivity">
+    tools:context=".screen.benefitsActivity">
 
 
 
@@ -24,7 +24,6 @@
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:text="Credit Card"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textStyle="bold"
@@ -84,12 +83,11 @@
             android:layout_marginEnd="10dp"
             android:background="@drawable/card_item"
             android:gravity="center"
-            android:hint="XXXXXXXXXXXXXXXX"
+            android:hint="xxxx xxxx xxxx xxxx"
             android:inputType="number"
             android:maxEms="16"
             android:maxLength="16"
             android:padding="5dp"
-            android:paddingStart="10dp"
             android:textSize="30sp" />
 
         <android.widget.Button

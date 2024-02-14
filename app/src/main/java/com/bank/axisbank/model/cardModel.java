@@ -1,4 +1,4 @@
-package com.bank.axisbank;
+package com.bank.axisbank.model;
 
 public class cardModel {
     private String card_Holder_Name ;

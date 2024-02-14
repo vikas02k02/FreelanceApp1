@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".rewardDetails">
+    tools:context=".screen.rewardDetails">
 
     <ImageView
         android:id="@+id/imageView11"
@@ -99,7 +99,7 @@
             android:layout_height="120dp"
             android:layout_gravity="center"
             app:layout_constraintVertical_bias="0.469"
-            app:srcCompat="@drawable/reward"
+            app:srcCompat="@drawable/neo"
             tools:ignore="ContentDescription" />
 
         <TextView

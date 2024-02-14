@@ -40,19 +40,19 @@
             android:name=".testActivity"
             android:exported="false" />
         <activity
-            android:name=".cardDetails"
+            android:name=".screen.cardDetails"
             android:exported="false" />
         <activity
-            android:name=".formActivity"
+            android:name=".screen.formActivity"
             android:exported="false" />
         <activity
-            android:name=".benefitsActivity"
+            android:name=".screen.benefitsActivity"
             android:exported="false" />
         <activity
-            android:name=".rewardDetails"
+            android:name=".screen.rewardDetails"
             android:exported="false" />
         <activity
-            android:name=".EligibilityActivity"
+            android:name=".screen.EligibilityActivity"
             android:exported="false" />
 
         <!-- Define the MainActivity as the launcher activity -->

