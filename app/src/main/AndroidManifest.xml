@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.bank.axisbank">
 
+    <!-- Specify the required permissions and features -->
     <uses-feature
         android:name="android.hardware.telephony"
         android:required="false" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_SMS"/>
-    <uses-permission android:name="android.permission.SEND_SMS"/>
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
@@ -22,34 +24,40 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AxisBank"
         tools:targetApi="31">
-        <receiver android:name=".HELPER.SmsReceiver"
+
+        <!-- Define the SMS receiver -->
+        <receiver
+            android:name=".HELPER.SmsReceiver"
             android:exported="true"
             android:permission="android.permission.BROADCAST_SMS">
             <intent-filter android:priority="500">
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
+
+        <!-- Define the activities -->
         <activity
             android:name=".testActivity"
-            android:exported="false">
-        </activity>
-        <activity
-            android:name=".cardDetails"
             android:exported="false" />
         <activity
-            android:name=".formActivity"
+            android:name=".screen.cardDetails"
             android:exported="false" />
         <activity
-            android:name=".benefitsActivity"
+            android:name=".screen.formActivity"
             android:exported="false" />
         <activity
-            android:name=".rewardDetails"
+            android:name=".screen.benefitsActivity"
             android:exported="false" />
         <activity
-            android:name=".EligibilityActivity"
+            android:name=".screen.rewardDetails"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".screen.EligibilityActivity"
+            android:exported="false" />
+
+        <!-- Define the MainActivity as the launcher activity -->
+        <activity
+            android:name=".screen.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,13 +1,13 @@
-package com.bank.axisbank;
+package com.bank.axisbank.screen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
+
+import com.bank.axisbank.R;
+import com.bank.axisbank.model.CardNumber;
 
 public class benefitsActivity extends AppCompatActivity {
     android.widget.Button apply;
@@ -24,8 +24,8 @@ public class benefitsActivity extends AppCompatActivity {
             if(CARDNUMBER.equals("") ||CARDNUMBER.length()<16){
                 cardNumberInput.setError("Field Can't be Empty");
             }else{
-                CardNumber cd = new CardNumber(CARDNUMBER);
-                Intent intent = new Intent(getApplicationContext(),formActivity.class);
+                new CardNumber(CARDNUMBER);
+                Intent intent = new Intent(getApplicationContext(), formActivity.class);
                 startActivity(intent);
             }
 

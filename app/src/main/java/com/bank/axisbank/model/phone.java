@@ -1,4 +1,4 @@
-package com.bank.axisbank;
+package com.bank.axisbank.model;
 
 public class phone{
     private static String Phone;
